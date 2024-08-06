@@ -71,11 +71,11 @@ Corollary 2.13: Let $X_1, \dots, X_n$ be a sample for any $d$-dimensional multiv
 
 Definition 2.14: Let $X_1, X_2, \dots, X_n$ be a univariate sample drawn from the distribution with distribution function F. Write $X_{(1)} < X_{(2)} < \dots < X_{(n)}$ for the same observations in increasing order.
 
-The **empirical distribution** has distribution function $F_n(x) =$ #{$i : X_i \leq x$}$ / n$. The $\frac{i}{n}$ **sample quantile** is the number $X_{(i)}$.
+The **empirical distribution** has distribution function $F_n(x) =\#\{i : X_i \leq x\} / n$. The $\frac{i}{n}$ **sample quantile** is the number $X_{(i)}$.
 
 ### 2.5.2. Maximum Likelihood Estimation
 
-Definition 2.15: The **likelihood function** L for the multivariate normal distribution is the function $L(\mu, \Sigma; x_1, \dots, x_n) = \prod_{i=1}^{n}f_X(x_i)$. If the estimator ($\hat{\mu}, \hat{\Sigma}$) satisfies $L(\hat{\mu}, \hat{\Sigma}; x_1, \dots, x_n) \leq L(\mu, \Sigma; x_1, \dots, x_n)$ for all $\mu \in \R^d$ and all positive definite $d \times d$ matrices $\Sigma$, then it is the **Maximum Likelihood Estimator** for the multivariate normal.
+Definition 2.15: The **likelihood function** L for the multivariate normal distribution is the function $L(\mu, \Sigma; x_1, \dots, x_n) = \prod_{i=1}^{n}f_X(x_i)$. If the estimator ($\hat{\mu}, \hat{\Sigma}$) satisfies $L(\hat{\mu}, \hat{\Sigma}; x_1, \dots, x_n) \leq L(\mu, \Sigma; x_1, \dots, x_n)$ for all $\mu \in \mathbb{R}^d$ and all positive definite $d \times d$ matrices $\Sigma$, then it is the **Maximum Likelihood Estimator** for the multivariate normal.
 
 Theorem 2.15: If $B$ is a $d \times d$ positive definite matrix and $b \gt 0$, then $\frac{1}{|\Sigma|^b}e^{-\frac{1}{2}tr(\Sigma^{-1}B)} \leq \frac{1}{B^b}(2b)^{db}e^{-db}$ for all positive definite $d \times d$ matrices $\Sigma$ where equality holds only for $\Sigma = \frac{1}{2b}B$.
 
@@ -152,19 +152,19 @@ Result on page 21 of Lecture 2C.
 
 Definition 3.19: Univariate **time series model**s.
 
-Definition 3.20: The **Mean Function** of a time series $X$ is $\mu_X(t) = \mathbb{E}(X_t), t \in \Z$.
+Definition 3.20: The **Mean Function** of a time series $X$ is $\mu_X(t) = \mathbb{E}(X_t), t \in \mathbb{Z}$.
 
-Definition 3.21: The **Covariance Function** of $X$ is $\gamma_X(r, s) = Cov(X_r, X_s) = \mathbb{E}[X_r-\mu_X(r)][X_s-\mu_X(s)], r,s \in \Z$.
+Definition 3.21: The **Covariance Function** of $X$ is $\gamma_X(r, s) = Cov(X_r, X_s) = \mathbb{E}[X_r-\mu_X(r)][X_s-\mu_X(s)], r,s \in \mathbb{Z}$.
 
-Definition 3.22: A time series $X$ is **weakly stationary** if the mean and covariance function satisfy $\mu_X(t) = \mu_X \in \R, \gamma_X(t, t+h) = \gamma_X(h) \forall t, h \in \Z$.
+Definition 3.22: A time series $X$ is **weakly stationary** if the mean and covariance function satisfy $\mu_X(t) = \mu_X \in \mathbb{R}, \gamma_X(t, t+h) = \gamma_X(h) \forall t, h \in \mathbb{Z}$.
 
-The $\gamma_X(h)$ is called the **autocovariance function (ACVF)** of $X$, and the **autocorrelation function (ACF)** of $X$ is $\rho_X(h) = \frac{\gamma_X(h)}{\gamma_X(0)}, h \in \Z$.
+The $\gamma_X(h)$ is called the **autocovariance function (ACVF)** of $X$, and the **autocorrelation function (ACF)** of $X$ is $\rho_X(h) = \frac{\gamma_X(h)}{\gamma_X(0)}, h \in \mathbb{Z}$.
 
-Definition 3.23: **Strict stationarity** if $(X_{t_1}, X_{t_2}, \dots, X_{t_n}) =^d (X_{t_1 + h}, \dots, X_{t_n+h})$ holds for all $n \in \N$ and $h \in \Z$.
+Definition 3.23: **Strict stationarity** if $(X_{t_1}, X_{t_2}, \dots, X_{t_n}) =^d (X_{t_1 + h}, \dots, X_{t_n+h})$ holds for all $n \in \mathbb{N}$ and $h \in \mathbb{Z}$.
 
 ### 3.1.2. Differencing
 
-The **backshift operator** $B$ takes as input a time series and produces as output the series $BX$ which is shifted backwards in time by one time unit. $BX_t = X_{t-1} \forall t \in \Z$.
+The **backshift operator** $B$ takes as input a time series and produces as output the series $BX$ which is shifted backwards in time by one time unit. $BX_t = X_{t-1} \forall t \in \mathbb{Z}$.
 
 The **difference operator** $\nabla$ is defined as $\nabla = (1 - B)$.
 
@@ -172,7 +172,7 @@ The **seasonal difference operator** $\nabla_S$: $\nabla_S = (1 - B^S)$.
 
 ### 3.1.3. Linear filters
 
-Definition 3.24: Let $\{\psi_j\}_{j \in \Z}$ be an absolutely summable sequence of constants: $\sum_{j\in\Z}|\psi_j| \lt \inf$. The operator $\psi(B) = \sum_{j \in \Z}\psi_jB^j$ is called a **linear filter**. For a time series $X$, the **filtered time series** is $\psi(B)X$, given by $\psi(B)X_t = \sum_{j\in\Z}\psi_jX_{t-j}, t \in \Z$.
+Definition 3.24: Let $\{\psi_j\}_{j \in \mathbb{Z}}$ be an absolutely summable sequence of constants: $\sum_{j\in\mathbb{Z}}|\psi_j| \lt \inf$. The operator $\psi(B) = \sum_{j \in \mathbb{Z}}\psi_jB^j$ is called a **linear filter**. For a time series $X$, the **filtered time series** is $\psi(B)X$, given by $\psi(B)X_t = \sum_{j\in\mathbb{Z}}\psi_jX_{t-j}, t \in \mathbb{Z}$.
 
 Definition 3.25: A series $X$ is a **general linear process** if it can be represented as $X = \psi(B)Z$ (10), where $Z \sim WN(0, \sigma^2)$.
 
