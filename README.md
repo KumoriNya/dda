@@ -1,10 +1,11 @@
-# Statistical Analysis of Dependent Data
+<h1 class="title" style="text-align:center; font-weight:bold">Statistical Analysis of Dependant Data</h1>
+
 1. [Multivariate Normal Distribution](#mnd)
 2. [Time Series](#ts)
 3. [Spatial Statistics](#ss)
 
 # Questions for the exam
-in case we need to apply any algorithm, would their definition be attached somewhere? (Like DL)
+in case we need to apply any algorithm, would their definition be attached somewhere? (Like DL, innovations)
 
 if model selection shows up in tut -> make (written) notes
 Or check whether model selection would show up in the exam
@@ -131,7 +132,7 @@ Result: Reject $H_0$ when $P(T^2 \geq \frac{(n-1)d}{nd}F_{d, n-d} | \mathbf{\mu}
 
 Since $\frac{\bar{X}-\mu}{s / \sqrt{n}} \sim t_{n-1}$, its rejection region is $\frac{\bar{X}-\mu}{s / \sqrt{n}} \gt t_{n-1, \alpha/2}$, the CI is then $\bar{X}-\frac{S}{\sqrt{n}}t_{n-1,\alpha/2} \lt \mu_0 \lt \bar{X}+\frac{S}{\sqrt{n}}t_{n-1,\alpha/2}$ .
 
-For Multivariate Normal Mean, $ R = \{\mu : n(\bar{X}-\mu)^{T}S^{-1}(\bar{X}-\mu) \leq \kappa^2 = T^2\}$
+For Multivariate Normal Mean, $R = \{\mu : n(\bar{X}-\mu)^{T}S^{-1}(\bar{X}-\mu) \leq \kappa^2 = T^2\}$
 
 ### 2.6.7. Simultaneous Confidence Statements
 
