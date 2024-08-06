@@ -1,7 +1,7 @@
-# dda
-(statistical) dependent data analysis
-
-[toc]
+# Statistical Analysis of Dependent Data
+1. [Multivariate Normal Distribution](#mnd)
+2. [Time Series](#ts)
+3. [Spatial Statistics](#ss)
 
 # Questions for the exam
 in case we need to apply any algorithm, would their definition be attached somewhere? (Like DL)
@@ -9,7 +9,7 @@ in case we need to apply any algorithm, would their definition be attached somew
 if model selection shows up in tut -> make (written) notes
 Or check whether model selection would show up in the exam
 
-# 2. Multivariate Normal Distribution (Lecture 2) <a name="2-Multivariate-Normal-Distribution></a>
+# 2. Multivariate Normal Distribution (Lecture 2) <a name="mnd"></a>
 
 ## 2.2. Random Vectors (Lecture 2A)
 
@@ -143,7 +143,7 @@ Result on page 21 of Lecture 2C.
 
 ### 2.6.9. Large samples from non-normal distributions
 
-# 3. Time Series (Lecture 3)
+# 3. Time Series (Lecture 3) <a name="ts"></a>
 
 ## 3.1. Introduction
 
@@ -367,7 +367,7 @@ Results on page 58 of Lecture 3D
 
 Obtained via logging the FPE, and apply approximation of non-sigma terms , then multiplying by $n$.
 
-# 4. Spatial Statistics (Lecture 4)
+# 4. Spatial Statistics (Lecture 4) <a name="ss"></a>
 
 ## 4.1. Random Fields (Lecture 4A)
 
