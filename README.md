@@ -5,10 +5,18 @@
 3. [Spatial Statistics](#ss)
 
 # Questions for the exam
-in case we need to apply any algorithm, would their definition be attached somewhere? (Like DL, innovations)
+- in case we need to apply any algorithm, would their definition be attached -somewhere? (Like DL, innovations) 
+    - YES
 
-if model selection shows up in tut -> make (written) notes
-Or check whether model selection would show up in the exam
+- if model selection shows up in tut -> make (written) notes - **THIS**
+~~Or check whether model selection would show up in the exam~~
+
+- How and why do we choose alpha/a for bonferroni again?
+
+- De-trend and de-seasonalise examples?
+
+- Where does the "the process can be expressed as ..." come from for tut7 sol?
+
 
 # 2. Multivariate Normal Distribution (Lecture 2) <a name="mnd"></a>
 
@@ -180,7 +188,16 @@ In the case of ARMA(p, q),
 
 ## 3.2. Trends and Seasonal Components
 
-### 3.2.1. Eliminiation of trend in the **absence** of seasonality
+Inspection of a time series may suggest the possibility of representing the data $x_1, \dots, x_n$ as a realisation of the process
+
+$X_t = m_t + s_t + Y_t$ (11),
+
+which is known as a classic **decomposition model** with components:
+- $m_t$, a slowly chaging function known as a **trend component**;
+- $s_t$, the **seasonal** function with known period $d$;
+- $Y_t$, the stationary time series **random noise** component.
+
+### 3.2.1. Eliminiation of trend in the **absence** of seasonality ($s_t = 0$)
 
 Method 1: **Least squares estimation of** $m_t$. (Page 37 of Lecture 3A)
 
@@ -195,6 +212,8 @@ Method 1: The small trend method (Page 59)
 Method 2: Moving average estimation (Page 71)
 
 Method 3: Differencing at lag $d$.
+
+Use the **difference operator** and the **seasonal difference operator**.
 
 ### 3.2.3. Design of filters **EXAMPLES**
 
@@ -230,7 +249,11 @@ where the **MA operator** is $\theta(B) = 1 + \theta_1B + \theta_2B^2 + \dots + 
 
 $\phi(B)X = \theta(B)Z$.
 
-#### Theorem 3.20: 
+#### Theorem 3.20: Stationary requires the roots to the AR polynomial to be **not on** the unit sphere?
+
+If $\phi(z) \neq 0$ for $z \in \mathbb{C}, |z| = 1$,
+
+then there exists $\delta > 0$ such that $\frac{1}{\phi(z)} = \sum_{j=-\inf}^{\inf}\chi_jz^j$ for $1-\delta \leq |z| \leq 1+\delta$, and the sum is absolutely summable. => $\phi^{-1}(z)$ converges for $|z| = 1$, hence $X = \phi^{-1}(B)\theta(B)Z$ is stationary, since MA ($\theta(B)Z$) is stationary.
 
 ### 3.3.4. Causal and Invertible
 
@@ -262,7 +285,7 @@ Similar to 3.21. Roots to $\theta(z)$ lie outside of the unit circle.
 
 ### 3.3.4. ACF of ARMA($p,q$) Processes
 
-If causal, then $X_t = \sum_{j=0}^{\inf}psi_jZ_{t-j}$. 
+If causal, then $X_t = \sum_{j=0}^{\inf}\psi_jZ_{t-j}$. 
 
 Since white noises are uncorrelated, 
 
@@ -314,9 +337,28 @@ $P_n(X_{n+h}) := a_0 + a_1X_n + \dots + a_nX_1$ is the **best linear predictor (
 
 We eventually obtain the **Yule-Walker** equations. (Via multiplying $X$ to $X_{p}$ on both sides of the equation then taking expectation)
 
+Results: $\Gamma_n a_n = \gamma_n(h)$
+
+Mean Squared Prediction Error (obtained via setting $\mu$ to be $0$):
+$$
+\mathbb{E}[ (X_{n+h} - P_n(X_{n+h})) ^2 ] = \gamma(0) - a_n^{T}\gamma_n(h)
+$$
+
 ### 3.5.2. General setting for Yule-Walker equations
 
+Given $y$ and $w_n, w_{n-1}, \dots, w_1$ are any r.v.s with finite second moments. To obtain estimate of $y$ given $w$'s,
+
+Let $\gamma = Cov(y, W) = [ Cov(y, W_n), \dots, Cov(y, W_1)]$ and $\Gamma = Cov(W, W) = [ Cov(W_{n+1-i}, W_{n+1-j})]_{i,j=1}^n$.
+
+The BLP of $y$ in terms of $w_i$'s is given by
+
+$P(y|W) = \mu_y + a(W-\mu_W)$, where $a$ is any solution of
+
 $\Gamma \mathbf{a} = \gamma$, where $\gamma = Cov(\mathbf{W}, \mathbf{W})$.
+
+The mean squared error of the predictor is given by
+
+$\mathbb{E}[ (y - P(y | W)) ^2 ] = Cov(y) - a^{T}\gamma$
 
 ### 3.5.3. The Durbin-Levinson algorithm
 
@@ -342,13 +384,30 @@ Choose the **correct** model.
 
 ### 3.6.1. Preliniary estimation
 
-### 3.6.2. Method 1: Yule-Walker estimation
+### 3.6.2. Method 1: Yule-Walker estimation <a name="YW_parameter_estimation"></a>
 
 Results displayed with equation (30) and (32)
 
-### 3.6.3. Method 2: The Partial ACF
+### 3.6.3. Method 2: The Partial ACF <a name = "PACF"></a>
 
-#### Theorem 3.25: PACF
+The PACF values demonstrate $p$ for AR($p$), where as ACF works for MA($q$), since the **oscilation** behaviour in PACF is dominated by MA (=> $q$ not observable), and ACF is dominated by AR (=> $p$ is not observable).
+
+#### Definition 3.33: PACF at lag $h$ of a *stationary process* $X$ <a name = "def_pacf"></a>
+$$
+\alpha(h) = Corr[ X_h - P(X_n | X_1, \dots, X_{h - 1}) , X_0 - P(X_0 | X_1, \dots, X_{h - 1}) ]
+\text{where }P(\dot | \dot)\text{ is the **BLP**}
+$$
+
+This result is **partial** because the AutoCorrelations between values of the time series separated by lag $h$ (i.e. $X_t, X_{t + h}$?) after the effect of intervening values have been **regressed** out of them. [Question: What do we mean by this?]
+
+#### Theorem 3.25: PACF <a name = "thm_pacf"></a>
+The PACF of a stationary series satisfies
+$$
+\alpha(0) = 1, \alpha(h) = a_{hh}, h \geq 1
+$$
+where $a_{hh}$ is the last component of the solution to the Y-W equations $a_h = \Gamma^{-1}_h\gamma_h$ with $\Gamma_h=[\gamma(i-j)]_{i, j=1}^n$,  and $\gamma_h = [\gamma(1), \gamma(2), \dots, \gamma(h)]^{T}$.
+
+For the sample case (sample PACF), we replace $a$ and $\Gamma$ by values computed using the observed samples.
 
 ### 3.6.5. Innovations estimation
 
