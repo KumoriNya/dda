@@ -4,7 +4,14 @@
 2. [Time Series](#ts)
 3. [Spatial Statistics](#ss)
 
+### TODOS
+
+- [ ] go through forecasting examples (3.5.6) (More specifically, lecture 12)
+
+- [ ] Estimation of time series: 3.6 (how to estimate mean and variance; $\phi$ and $\theta$; and choosing the right $p, q$)
+
 # Questions for the exam
+
 - in case we need to apply any algorithm, would their definition be attached -somewhere? (Like DL, innovations) 
     - YES
 
@@ -17,6 +24,13 @@
 
 - Where does the "the process can be expressed as ..." come from for tut7 sol?
 
+- Matern class??? (Also in week 8 tut)
+
+- Binned Emperical Semivariogram?? (wk9 tut)
+
+- Be prepared to use Lagrange multiplier for Ordinary Kriging? 
+
+- What's **invariance**?
 
 # 2. Multivariate Normal Distribution (Lecture 2) <a name="mnd"></a>
 
@@ -45,7 +59,7 @@ Definition 2.7: The **mgf** of a d-dimensional random vector $X$ is $m_X(u)=E(e^
 
 Definition 2.9: If a d-dimensional normal random vector takes values only in a subspace of dimension smaller than d, it is **degenerate**. If it takes values in all of $\R^d$, it is called non-degenerate.
 
-Theorem 2.7: A multivariate normal random vector is non-degenerate iff its covariance matrix is poeitive definite.
+Theorem 2.7: A multivariate normal random vector is non-degenerate iff its covariance matrix is positive definite.
 
 * A non-negative definite matrix has an inverse (i.e. the matrix is non-singular) iff it is positive definite, which has a positve determinant.
 
@@ -138,7 +152,7 @@ Result: Reject $H_0$ when $P(T^2 \geq \frac{(n-1)d}{nd}F_{d, n-d} | \mathbf{\mu}
 
 ### 2.6.6. Confidence Regions
 
-Since $\frac{\bar{X}-\mu}{s / \sqrt{n}} \sim t_{n-1}$, its rejection region is $\frac{\bar{X}-\mu}{s / \sqrt{n}} \gt t_{n-1, \alpha/2}$, the CI is then $\bar{X}-\frac{S}{\sqrt{n}}t_{n-1,\alpha/2} \lt \mu_0 \lt \bar{X}+\frac{S}{\sqrt{n}}t_{n-1,\alpha/2}$ .
+Since $\frac{\bar{X}-\mu}{s / \sqrt{n}} \sim t_{n-1}$, its rejection region is $| \frac{\bar{X}-\mu}{s / \sqrt{n}} | \gt t_{n-1, \alpha/2}$, the CI is then $\bar{X}-\frac{S}{\sqrt{n}}t_{n-1,\alpha/2} \lt \mu_0 \lt \bar{X}+\frac{S}{\sqrt{n}}t_{n-1,\alpha/2}$ .
 
 For Multivariate Normal Mean, $R = \{\mu : n(\bar{X}-\mu)^{T}S^{-1}(\bar{X}-\mu) \leq \kappa^2 = T^2\}$
 
