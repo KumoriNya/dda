@@ -6,9 +6,9 @@
 
 ### TODOS
 
-- [ ] go through forecasting examples (3.5.6) (More specifically, lecture 12)
+- [x] go through forecasting examples (3.5.6) (More specifically, lecture 12)
 
-- [ ] Estimation of time series: 3.6 (how to estimate mean and variance; $\phi$ and $\theta$; and choosing the right $p, q$)
+- [x] Estimation of time series: 3.6 (how to estimate mean and variance; $\phi$ and $\theta$; and choosing the right $p, q$)
 
 # Questions for the exam
 
@@ -24,11 +24,11 @@
 
 - Where does the "the process can be expressed as ..." come from for tut7 sol?
 
-- Matern class??? (Also in week 8 tut)
+~~- Matern class??? (Also in week 8 tut)~~
 
-- Binned Emperical Semivariogram?? (wk9 tut)
+~~- Binned Emperical Semivariogram?? (wk9 tut)~~
 
-- Be prepared to use Lagrange multiplier for Ordinary Kriging? 
+~~- Be prepared to use Lagrange multiplier for Ordinary Kriging? ~~
 
 - What's **invariance**?
 
